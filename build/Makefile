@@ -1,22 +1,21 @@
 SITE  = ./site 
 
-default: install
-
 clean:
 	rm -rf dist
 	rm -rf _site
-
-build:
-	cabal configure
-	cabal build
 
 run:
 	$(SITE) clean
 	$(SITE) build
 
-p:
-	$(SITE) watch
+bp:
+	$(SITE) build
+	$(SITE) preview
 
+
+bw:
+	$(SITE) build
+	$(SITE) watch
 
 
 
@@ -24,4 +23,3 @@ p:
 
 deploy: run
 	cp -r _site/* ../
-
