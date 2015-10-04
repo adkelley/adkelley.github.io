@@ -13,6 +13,10 @@ bp:
 	$(SITE) preview
 
 
+cmp:    
+	ghc --make site.hs
+	$(SITE) rebuild
+
 bw:
 	$(SITE) build
 	$(SITE) watch

@@ -11,6 +11,7 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
+    -- Compress CSS
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
@@ -21,6 +22,7 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
+    -- Post list
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
@@ -42,6 +44,13 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
+
+    -- Render the 404 page, we don't relativize URL's here.
+    match "404.html" $ do
+        route idRoute
+        compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
 
     match "index.html" $ do
         route idRoute
