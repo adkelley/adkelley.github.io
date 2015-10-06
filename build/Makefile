@@ -18,6 +18,7 @@ cmp:
 	$(SITE) rebuild
 
 bw:
+	$(SITE) clean
 	$(SITE) build
 	$(SITE) watch
 
